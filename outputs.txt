@@ -1,3 +1,5 @@
+First RUN
+
 (gami) [heathknowles@NightX Gami]$ python main.py
 Rock-Paper-Scissors Plus - AI Judge (type 'quit' to exit)
 
@@ -64,3 +66,74 @@ Your move: lalala
 Your move: quit
 Final Score: 
 User: 0 | Bot: 2
+
+
+Second RUN
+
+
+python main.py
+Rock-Paper-Scissors Plus - AI Judge (type 'quit' to exit)
+
+Your move: Paper
+
+-----ROUND RESULT-----
+{
+  "round": 1,
+  "user_input": "Paper",
+  "reasoning": "The user input 'Paper' clearly and unambiguously maps to the game move 'paper'. Paper beats rock in the provided game rules.",
+  "interpreted_intent": "paper",
+  "move_status": "VALID",
+  "user_move": "paper",
+  "bot_move": "rock",
+  "round_winner": "user",
+  "bomb_consumed": false,
+  "state_update": {
+    "user_bomb_available": true
+  },
+  "next_action": "Proceed to the next round."
+}
+----------------------
+
+Your move: bomb
+
+-----ROUND RESULT-----
+{
+  "round": 2,
+  "user_input": "bomb",
+  "reasoning": "The user input 'bomb' clearly indicates the intended move. Since the user has not previously used their bomb, the move is valid. Rule 3 states bomb vs bomb results in a draw.",
+  "interpreted_intent": "bomb",
+  "move_status": "VALID",
+  "user_move": "bomb",
+  "bot_move": "bomb",
+  "round_winner": "draw",
+  "bomb_consumed": true,
+  "state_update": {
+    "user_bomb_available": false
+  },
+  "next_action": "Proceed to round 3."
+}
+----------------------
+
+Your move: Rock
+
+-----ROUND RESULT-----
+{
+  "round": 3,
+  "user_input": "Rock",
+  "reasoning": "The user input 'Rock' clearly maps to the 'rock' move. Since rock is a standard move and not the bomb (which was already used), the move is valid. Rock beats scissors.",
+  "interpreted_intent": "rock",
+  "move_status": "VALID",
+  "user_move": "rock",
+  "bot_move": "scissors",
+  "round_winner": "user",
+  "bomb_consumed": false,
+  "state_update": {
+    "user_bomb_available": false
+  },
+  "next_action": "Proceed to round 4."
+}
+----------------------
+
+Your move: quit
+Final Score: 
+User: 2 | Bot: 0
