@@ -21,7 +21,7 @@ GAME RULES
    - Beats all other moves
    - Can be used ONLY ONCE by the user in the entire game
 
-3. bomb vs bomb results in a draw.
+3. According to the game rules, bomb vs bomb results in a draw.
 
 4. If the user's move is INVALID or UNCLEAR:
    - The user's turn is wasted
