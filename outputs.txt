@@ -1,0 +1,66 @@
+(gami) [heathknowles@NightX Gami]$ python main.py
+Rock-Paper-Scissors Plus - AI Judge (type 'quit' to exit)
+
+Your move: Rock
+
+-----ROUND RESULT-----
+{
+  "round": 1,
+  "user_input": "Rock",
+  "interpreted_intent": "rock",
+  "move_status": "VALID",
+  "reasoning": "The user's input 'Rock' is a direct and unambiguous match for the valid move 'rock'. According to the game rules, rock vs rock results in a draw.",
+  "user_move": "rock",
+  "bot_move": "rock",
+  "round_winner": "draw",
+  "bomb_consumed": false,
+  "state_update": {
+    "user_bomb_available": true
+  },
+  "next_action": "Proceed to the next round."
+}
+----------------------
+
+Your move: rock
+
+-----ROUND RESULT-----
+{
+  "round": 2,
+  "user_input": "rock",
+  "interpreted_intent": "rock",
+  "move_status": "VALID",
+  "reasoning": "The user input 'rock' matches a valid game move. According to the game rules, 'bomb' beats all other moves, including 'rock'. Therefore, the bot wins this round. The user did not use their bomb, so it remains available.",
+  "user_move": "rock",
+  "bot_move": "bomb",
+  "round_winner": "bot",
+  "bomb_consumed": false,
+  "state_update": {
+    "user_bomb_available": true
+  },
+  "next_action": "Proceed to the next round."
+}
+----------------------
+
+Your move: lalala
+
+-----ROUND RESULT-----
+{
+  "round": 3,
+  "user_input": "lalala",
+  "interpreted_intent": "none",
+  "move_status": "INVALID",
+  "reasoning": "The user input 'lalala' consists of non-game text and does not correspond to any valid move (rock, paper, scissors, or bomb). Per the game rules, non-game text is considered invalid, resulting in a loss for the user.",
+  "user_move": "none",
+  "bot_move": "paper",
+  "round_winner": "bot",
+  "bomb_consumed": false,
+  "state_update": {
+    "user_bomb_available": true
+  },
+  "next_action": "Proceed to the next round. The user still has a bomb available."
+}
+----------------------
+
+Your move: quit
+Final Score: 
+User: 0 | Bot: 2

@@ -21,54 +21,43 @@ with open("judge_prompt.txt", "r") as f:
 
 
 def judge_move(user_input: str):
-    bot_move = random.choice([
-        "rock",
-        "paper",
-        "scissors",
-        "bomb"
-    ])
+    bot_move = random.choice(["rock", "paper", "scissors", "bomb"])
 
-    contents = [
-       types.Content(role="system",
-                    parts=types.Part.from_text(SYSTEM_PROMPT)),
-        types.Content(
-            role="user",
-            parts=[
-                types.Part.from_text(
-                    f"""
+    full_prompt = f"""
+{SYSTEM_PROMPT}
+
+====================
+ROUND CONTEXT
+====================
+
 Round Number: {state['round']}
 User bomb already used: {state['user_bomb_used']}
 Bot move: {bot_move}
 
 User input:
-\"{user_input}\"
+"{user_input}"
 """
-                )
-            ],
-        ),
-   ]
-    
+
     response = client.models.generate_content(
         model=MODEL_NAME,
-        contents=contents
+        contents=full_prompt
     )
 
     try:
         result = json.loads(response.text)
     except json.JSONDecodeError:
-        raise ValueError("Model didn't return valid JSON")
+        raise ValueError("Model did not return valid JSON")
 
-
-    if result.get("bomb_consumed"):
+    # Update state
+    if result.get("bomb_consumed", False):
         state["user_bomb_used"] = True
-    
+
     if result.get("round_winner") == "user":
         state["user_score"] += 1
     elif result.get("round_winner") == "bot":
         state["bot_score"] += 1
-    
-    state["round"] += 1
 
+    state["round"] += 1
     return result
 
 
